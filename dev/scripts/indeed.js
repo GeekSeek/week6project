@@ -43,6 +43,11 @@ geekseek.makeCall = function(cityName){
   });
 }
 
+var gps = navigator.geolocation.getCurrentPosition(
+ function (position) {
+  console.log(gps);
+   });
+
 $(document).ready(function(){
   geekseek.getInput();
 })
