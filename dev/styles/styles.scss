@@ -1,1 +1,21 @@
 @import "setup";
+
+$white: #fefdfd;
+$blue: #1D5FF7;
+$green: #BCD6D3;
+$yellow: #FBCB03;
+$black: #12061F;
+
+body {
+	background: $green;
+}
+
+video {
+	width: 100%;
+	position: fixed;
+	z-index: -1;
+}
+
+.poster {
+	display: none;
+}
