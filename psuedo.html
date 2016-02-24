@@ -1,0 +1,14 @@
+User inputs Province name
+Based on the name of the city, a dropdown is populated with common city names OR user selects city and province. Would have to do this with the google API. User's city name and province name are combined and stored in a variable.
+Request send to API with "Junior Developer" in job title, within user's city, and containing at least one of the following keywords in the description:
+	HTML, CSS, JavaScript, Sass, Git, Gulp, Bootstrap, FTP, JQuery, Agency, Wordpress
+API returns results as array of objects (set a limit...maybe 50?)
+Place the first ten on the page, with an option to show more that will load the next ten in the array OR if there are no more to display (null?) button will spit out message "no more to display"
+Pull out job title from the object and display on page
+Pull out city from object and display on page
+Pull out description from object and display on page
+Pull out company name and display on page
+Pull out tagged terms if they exist and use them to populate a tag cloud underneath the job description so user knows what job is about without reading description
+Pull out link to job posting and code into "learn more" or "apply here"
+Pull out the posted date
+filter by date button: find the date posted and use it to sort the job postings - turn date into numeric value, use .sort?
