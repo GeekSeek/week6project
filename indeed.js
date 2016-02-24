@@ -20,15 +20,23 @@ geekseek.makeCall = function(cityName){
     data: {
     	format: 'json',
       l: cityName,
-      q:'javascript',
+      q:'junior front-end developer',
       co:'CA',
+      psf: 'advsrch',
+      as_phr: '',
       fromage: '15',
-      limit:'30',
-      // salary:'100000',
+      limit:'50',
+      salary:'',
+      as_not:'',
+      as_ttl:'',
+      as_cmp:'',
+      jt: 'all',
+      st: '',
+      radius: '50',
+      sr: 'directhire',
       expired:'false',
-      sr:'directhire',
-      // as_and:'junior',
-      // as_any:'HTML+CSS+JavaScript'
+      as_and:'telecommute',
+      as_any:'HTML+CSS+JavaScript'
     }
   }).then(function(data){
   	console.log(data);
