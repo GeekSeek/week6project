@@ -43,10 +43,17 @@ geekseek.makeCall = function(cityName){
   });
 }
 
-var gps = navigator.geolocation.getCurrentPosition(
- function (position) {
-  console.log(gps);
-   });
+// var gps = navigator.geolocation.getCurrentPosition(
+//  function (position) {
+//   console.log(gps);
+//    });
+
+function success(position) {
+  var crd = position.coords;
+
+  console.log(crd);
+  
+};
 
 $(document).ready(function(){
   geekseek.getInput();
