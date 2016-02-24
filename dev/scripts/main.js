@@ -1,18 +1,18 @@
-var geekseek = {};
+var geek = {};
 
-geekseek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2'
+geek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2'
 
-geekseek.getInput = function(){
+geek.getInput = function(){
 	$('#citySubmit').on('click', function(e){
 		e.preventDefault();
 		userCity = $('input[name="cityButton"]:checked').val();
 		console.log(userCity);
-		geekseek.makeCall(userCity);
+		geek.makeCall(userCity);
 	});
 }
 
 
-geekseek.makeCall = function(cityName){
+geek.makeCall = function(cityName){
 	$.ajax({
     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
     method: 'GET',
@@ -43,18 +43,15 @@ geekseek.makeCall = function(cityName){
   });
 }
 
-// var gps = navigator.geolocation.getCurrentPosition(
-//  function (position) {
-//   console.log(gps);
-//    });
+var gps = navigator.geolocation.getCurrentPosition(
+ function (position) {
+  geek.city = position.coords.latitude;
+  console.log(geek.city);
+   });
 
-function success(position) {
-  var crd = position.coords;
 
-  console.log(crd);
-  
-};
 
 $(document).ready(function(){
-  geekseek.getInput();
+  geek.getInput();
+  console.log(gps);
 })
