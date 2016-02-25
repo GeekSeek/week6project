@@ -1,4 +1,5 @@
 @import "setup";
+@import "grid";
 
 $white: #fefdfd;
 $blue: #1D5FF7;
@@ -10,25 +11,52 @@ $headerFont: 'Roboto', sans-serif;
 
 body {
 	background: $green;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+.wrapper {
+	@include column(12);
+	max-width: 1080px;
 }
 
 header {
 	color: $white;
 	font-family: $headerFont;
 	font-weight: 400;
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+	width: 100%;
+}
+
+header .wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: inherit;
 }
 
 video {
+	position: absolute;
+	height: 100vh;
 	width: 100%;
-	height: auto;
-	position: fixed;
 	z-index: -2;
+	object-fit: cover;
 }
 
 .filter {
-	width: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	height: 100%;
-	position: fixed;
+	width: 100%;
 	background: $green;
 	opacity: .5;
 	z-index: -1;
@@ -39,7 +67,10 @@ video {
 }
 
 .logo {
-	padding: 20px;
+	@include column(3);
+	@include pull(9);
+	margin-top: 10px;
+
 }
 
 .logo img, .logo h2 {
@@ -56,8 +87,7 @@ video {
 }
 
 form {
-	text-align:center;
-	padding-top: 25%;
+	align-self: center;
 	
 }
 
