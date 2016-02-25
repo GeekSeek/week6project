@@ -32,6 +32,7 @@ geek.makeCall = function (cityName) {
       fromage: '30',
       limit: '50',
       // sort: 'date',
+      highlight: 0,
       salary: '',
       as_not: '',
       as_ttl: '',
@@ -46,16 +47,22 @@ geek.makeCall = function (cityName) {
     }
   }).then(function (data) {
     console.log(data.results);
+    geek.displayResults(data.results);
   });
 };
 
-<<<<<<< HEAD
+// Display results in handlebar template
+geek.displayResults = function (results) {
+  console.log(results);
+  var resultsHtml = $('#resultListTemplate').html();
+  var resultsTemplate = Handlebars.compile(resultsHtml);
+  results.forEach(function (jobPost) {
+    // console.log(jobPost);
+    $('section.results').append(resultsTemplate(jobPost));
+  });
+};
+
 //make a call that will display the results sorted by date posted instead of relevance
-=======
-<<<<<<< HEAD
-// Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province
-=======
->>>>>>> a9176c049c46520ae96da9dc20cd51fc4c1dcfaa
 geek.makeSortedCall = function (cityName) {
   $.ajax({
     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
@@ -93,7 +100,8 @@ geek.makeSortedCall = function (cityName) {
 geek.filterResults = function (sortedData) {
   console.log('works!');
 };
->>>>>>> ae3c10b80f6d71a3ab00ed0c860ea26bdb276ff1
+
+// Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province
 
 var gps = navigator.geolocation.getCurrentPosition(function (position) {
   var lat = position.coords.latitude;

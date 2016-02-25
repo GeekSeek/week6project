@@ -31,6 +31,7 @@ geek.makeCall = function(cityName){
       fromage: '30',
       limit:'50',
       // sort: 'date',
+      highlight: 0,
       salary:'',
       as_not:'',
       as_ttl:'',
@@ -45,8 +46,20 @@ geek.makeCall = function(cityName){
     }
   }).then(function(data){
   	console.log(data.results);
+    geek.displayResults(data.results);
   });
 }
+
+// Display results in handlebar template
+geek.displayResults = function(results) {
+  console.log(results);
+  var resultsHtml = $('#resultListTemplate').html();
+  var resultsTemplate = Handlebars.compile(resultsHtml);
+  results.forEach(function(jobPost) {
+    // console.log(jobPost);
+    $('section.results').append(resultsTemplate(jobPost));
+  });
+};
 
 //make a call that will display the results sorted by date posted instead of relevance
 geek.makeSortedCall = function(cityName){
