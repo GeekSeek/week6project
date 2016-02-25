@@ -4,6 +4,9 @@ var geek = {};
 
 geek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2';
 
+// On submit, grab city from user input text field
+// Pass city into Indeed ajax call
+
 geek.getInput = function () {
   $('form').on('submit', function (e) {
     e.preventDefault();
@@ -28,6 +31,7 @@ geek.makeCall = function (cityName) {
       as_phr: '',
       fromage: '30',
       limit: '50',
+      // sort: 'date',
       salary: '',
       as_not: '',
       as_ttl: '',
@@ -41,11 +45,17 @@ geek.makeCall = function (cityName) {
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (data) {
-    console.log(data);
+    console.log(data.results);
   });
 };
 
+<<<<<<< HEAD
 //make a call that will display the results sorted by date posted instead of relevance
+=======
+<<<<<<< HEAD
+// Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province
+=======
+>>>>>>> a9176c049c46520ae96da9dc20cd51fc4c1dcfaa
 geek.makeSortedCall = function (cityName) {
   $.ajax({
     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
@@ -83,6 +93,7 @@ geek.makeSortedCall = function (cityName) {
 geek.filterResults = function (sortedData) {
   console.log('works!');
 };
+>>>>>>> ae3c10b80f6d71a3ab00ed0c860ea26bdb276ff1
 
 var gps = navigator.geolocation.getCurrentPosition(function (position) {
   var lat = position.coords.latitude;
@@ -105,6 +116,7 @@ geek.getGoogle = function (query) {
     var autoProv = answer.results[0].address_components[6].short_name;
     console.log(answer);
     console.log(autoProv);
+    // Auto-populate city and province into user input field
     $('#userCity').attr("value", autoCity);
     $('#provinces').attr("value", autoProv);
     if (autoProv === 'ON') {
