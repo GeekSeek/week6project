@@ -125,11 +125,7 @@ geek.getGoogle = function (query) {
     console.log(answer);
     console.log(autoProv);
     // Auto-populate city and province into user input field
-    $('#userCity').attr("value", autoCity);
-    $('#provinces').attr("value", autoProv);
-    if (autoProv === 'ON') {
-      $('#ON').attr("selected", "selected");
-    }
+    $('#userCity').attr("value", autoCity + ", " + autoProv);
   });
 };
 
