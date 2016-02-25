@@ -2,17 +2,24 @@
 @import "grid";
 
 $white: #fefdfd;
-$blue: #1D5FF7;
+$grey: #d5d5d5;
+$grey-dark: darken($grey, 10%);
+$blue: #195EF7;
 $green: #BCD6D3;
-$yellow: #FBCB03;
-$black: #12061F;
+$yellow: #FFCA00;
+$yellow-light: lighten($yellow, 10%);
+$black: #2a2a2a;
 $mainFont: 'Open Sans', sans-serif;
 $headerFont: 'Roboto', sans-serif;
 
+// === GENERAL ===
+
 body {
 	background: $green;
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
+	font-family: $mainFont;
+	font-family: 300;
 }
 
 ul {
@@ -20,31 +27,40 @@ ul {
 }
 
 .wrapper {
-	@include column(12);
 	max-width: 1080px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 15px 2%;
 }
+
+// === HEADER SECTION ===
 
 header {
 	color: $white;
-	font-family: $headerFont;
-	font-weight: 400;
+	font-weight: 300;
 	position: relative;
+	width: 100%;
 	height: 100vh;
 	overflow: hidden;
-	width: 100%;
+
+	h2 {
+		font-family: $headerFont;
+		font-weight: 300;
+	}
 }
 
 header .wrapper {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	height: inherit;
+	align-items: center;
+	justify-content: center;
+	
 }
 
 video {
 	position: absolute;
-	height: 100vh;
 	width: 100%;
+	height: 100vh;
 	z-index: -2;
 	object-fit: cover;
 }
@@ -66,50 +82,107 @@ video {
 	display: none;
 }
 
+.logo-container {
+	position: absolute;
+	top: 0;
+	left: 2%;
+	display: flex;
+	align-items: center;
+
+	h2 {
+		flex-grow: 1;
+		padding: 15px;
+	}
+}
+
 .logo {
-	@include column(3);
-	@include pull(9);
-	margin-top: 20px;
-
-}
-
-.logo img, .logo h2 {
-	float: left;
-}
-
-.logo img {
 	width: 50px;
-}
 
-.logo h2 {
-	margin-top: 0;
-	padding: 10px;
-
+	img {
+		max-width: 100%;
+	}
 }
 
 form {
-	@include column(6);
-	@include pull(3);
-	@include push(3);
-	align-self: center;
-	box-shadow: 0 0 5px $green;
-	position: relative;
-	z-index: 1;
-	input {
-		margin: 0;
-		padding: 10px;
-		border: 0;
-		outline: 0;
-	}
-	#userCity {
-		width: 78%;
+	display: flex;
+	width: 50%;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
 
+	> * {
+		outline: none;
+		border: none;
+		padding: 15px;
 	}
-	#citySubmit {
-		width: 20%;
-		background: $yellow;
-		color: $white;
+}
+
+#userCity {
+	color: $grey;
+	font-weight: 300;
+	flex-grow: 1;
+
+	&:focus {
+		color: $black;
 	}
+}
+
+#citySubmit {
+	width: 150px;
+	color: $white;
+	background: $yellow;
+	transition: all 0.35s;
+
+	&:hover {
+		background: $yellow-light;
+	}
+}
+
+// .logo {
+// 	@include column(12);
+// 	@include pull(9);
+// 	margin-top: 20px;
+// }
+
+// .logo img, .logo h2 {
+// 	float: left;
+// }
+
+// .logo img {
+// 	width: 50px;
+// }
+
+// .logo h2 {
+// 	margin-top: 0;
+// 	padding: 10px;
+
+// }
+
+// form {
+// 	@include column(6);
+// 	@include pull(3);
+// 	@include push(3);
+// 	align-self: center;
+// 	box-shadow: 0 0 5px $green;
+// 	position: relative;
+// 	z-index: 1;
+// 	input {
+// 		margin: 0;
+// 		padding: 10px;
+// 		border: 0;
+// 		outline: 0;
+// 	}
+// 	#userCity {
+// 		width: 78%;
+
+// 	}
+// 	#citySubmit {
+// 		width: 20%;
+// 		background: $yellow;
+// 		color: $white;
+// 	}
+// }
+
+section.results {
+	// display: none;
 }
 
 span#indeed_at {

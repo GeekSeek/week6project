@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Geek Seek</title>
 	<link rel="stylesheet" href="styles/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 	<!-- RESULT LIST HANDLEBAR TEMPLATE -->
 	<script id="resultListTemplate" type="x-handlebars-template">
 		<ul class="resultList">
@@ -34,30 +34,35 @@
 <body>
 	<header>
 		<div class="homepage-hero-module">
-		    <div class="video-container">
-		        <div class="filter"></div>
-		        <video autoplay loop class="fillWidth">
-		            <source src="assets/Working-Space.mp4" type="video/mp4" />Your browser does not support the video tag. We suggest you upgrade your browser.
-		            <source src="assets/Working-Space.webm" type="video/webm" />Your browser does not support the video tag. We suggest you upgrade your browser.
-		        </video>
-		        <div class="poster hidden">
-		            <img src="assets/Working-Space.jpg" alt="">
-		        </div><!-- .poster -->
-		    </div><!-- .video-container -->
+	    <div class="video-container">
+	      <div class="filter"></div>
+	      <video autoplay loop class="fillWidth">
+	        <source src="assets/Working-Space.mp4" type="video/mp4" />Your browser does not support the video tag. We suggest you upgrade your browser.
+	        <source src="assets/Working-Space.webm" type="video/webm" />Your browser does not support the video tag. We suggest you upgrade your browser.
+	      </video>
+	      <div class="poster hidden">
+	      	<img src="assets/Working-Space.jpg" alt="">
+	      </div><!-- .poster -->
+	    </div><!-- .video-container -->
 		</div><!-- .homepage-hero-module -->
-			<div class="wrapper clearfix">
-				<div class="logo clearfix">
+		<div class="wrapper">
+			<div class="logo-container">
+				<div class="logo">
 					<img src="assets/logo_geekseek.png" alt="geek seek logo">
-					<h2>Geek Seek</h2>
-				</div><!-- .logo -->
-				<form class="clearfix">
-					<input type="text" name="userCity" id="userCity">
-					<input id="citySubmit" type="submit">
-				</form>
-			</div><!-- .wrapper -->
+				</div>
+				<h2>Geek Seek</h2>
+			</div><!-- .logo-container -->
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, iure?</h2>
+			<form>
+				<input type="text" name="userCity" id="userCity">
+				<input id="citySubmit" type="submit" value="Find a job!">
+			</form>
+		</div><!-- .wrapper -->
 	</header>
-	<section class="results">
+
+	<section class="results" id="results">
 	<button id="sortDate" value="sortDate">Sort by Date</button>
+	<button class="loadMore" id="loadMore" value="10">Load More</button>
 	</section>
 <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"><img
 src="http://www.indeed.com/p/jobsearch.gif" style="border: 0;
