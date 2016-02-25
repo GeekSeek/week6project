@@ -69,7 +69,7 @@ video {
 .logo {
 	@include column(3);
 	@include pull(9);
-	margin-top: 10px;
+	margin-top: 20px;
 
 }
 
@@ -84,11 +84,32 @@ video {
 .logo h2 {
 	margin-top: 0;
 	padding: 10px;
+
 }
 
 form {
+	@include column(6);
+	@include pull(3);
+	@include push(3);
 	align-self: center;
-	
+	box-shadow: 0 0 5px $green;
+	position: relative;
+	z-index: 1;
+	input {
+		margin: 0;
+		padding: 10px;
+		border: 0;
+		outline: 0;
+	}
+	#userCity {
+		width: 78%;
+
+	}
+	#citySubmit {
+		width: 20%;
+		background: $yellow;
+		color: $white;
+	}
 }
 
 span#indeed_at {
