@@ -14,6 +14,8 @@ geek.getInput = function () {
     console.log(geek.userCity);
     geek.makeCall(geek.userCity);
     geek.makeSortedCall(geek.userCity);
+    $('html, body').animate({
+      scrollTop: $("#results").offset().top }, 1000);
   });
 };
 
@@ -30,7 +32,7 @@ geek.makeCall = function (cityName) {
       psf: 'advsrch',
       as_phr: '',
       fromage: '30',
-      limit: '50',
+      limit: '10',
       // sort: 'date',
       highlight: 0,
       salary: '',
@@ -46,6 +48,7 @@ geek.makeCall = function (cityName) {
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (data) {
+    geek.fullObject = data;
     console.log(data.results);
     geek.displayResults(data.results);
   });
@@ -56,6 +59,12 @@ geek.displayResults = function (results) {
   console.log(results);
   var resultsHtml = $('#resultListTemplate').html();
   var resultsTemplate = Handlebars.compile(resultsHtml);
+  console.log(geek.fullObject.totalResults);
+  if (geek.fullObject.totalResults < 10) {
+    $('#loadMore').hide();
+  } else {
+    $('#loadMore').show();
+  }
   results.forEach(function (jobPost) {
     // console.log(jobPost);
     $('section.results').append(resultsTemplate(jobPost));
@@ -77,7 +86,7 @@ geek.makeSortedCall = function (cityName) {
       as_phr: '',
       sort: 'date',
       fromage: '30',
-      limit: '50',
+      limit: '10',
       salary: '',
       as_not: '',
       as_ttl: '',
@@ -99,6 +108,56 @@ geek.makeSortedCall = function (cityName) {
 
 geek.filterResults = function (sortedData) {
   console.log('works!');
+};
+
+$('#loadMore').on('click', function (e) {
+  e.preventDefault();
+  // $('section.results').empty();
+  var listSection = $(this).attr('value');
+  var stringAsNumber = parseInt(listSection);
+  var newSearch = stringAsNumber + 10;
+  $.ajax({
+    url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
+    method: 'GET',
+    dataType: 'jsonp',
+    data: {
+      format: 'json',
+      l: geek.userCity,
+      q: 'junior front-end developer',
+      co: 'CA',
+      psf: 'advsrch',
+      as_phr: '',
+      sort: '',
+      fromage: '30',
+      limit: '10',
+      start: listSection,
+      salary: '',
+      as_not: '',
+      as_ttl: '',
+      as_cmp: '',
+      jt: 'all',
+      st: '',
+      radius: '50',
+      sr: 'directhire',
+      expired: 'false',
+      as_and: '',
+      as_any: 'HTML+CSS+JavaScript'
+    }
+  }).then(function (data) {
+    geek.fullObject = data;
+    console.log(data.results);
+    $('#loadMore').attr('value', newSearch);
+    geek.hideButton(newSearch);
+    geek.displayResults(data.results);
+  });
+});
+
+geek.hideButton = function (newSearch) {
+  if (geek.fullObject.totalResults > newSearch) {
+    $('#loadMore').show();
+  } else {
+    $('#loadMore').hide();
+  }
 };
 
 // Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province
