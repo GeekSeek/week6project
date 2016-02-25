@@ -45,9 +45,34 @@ geek.makeCall = function(cityName){
 
 var gps = navigator.geolocation.getCurrentPosition(
  function (position) {
-  geek.city = position.coords.latitude;
-  console.log(geek.city);
+  var lat = position.coords.latitude;
+  var lng = position.coords.longitude;
+  position = (lat + ', ' + lng);
+  console.log(position);
+  geek.getGoogle(position);
    });
+
+geek.getGoogle = function (query){
+  $.ajax({
+    url:"https://maps.googleapis.com/maps/api/geocode/json",
+    type:'GET',
+    dataType:'json',
+    data: {
+      latlng: query
+    }
+    }).then(function(answer){
+        var autoCity = answer.results[0].address_components[4].long_name;
+        var autoProv = answer.results[0].address_components[6].short_name;
+      console.log(answer);
+      console.log(autoProv);
+      $('#userCity').attr("value", autoCity);
+      $('#provinces').attr("value", autoProv);
+      if (autoProv === 'ON'){
+        $('#ON').attr("selected", "selected");
+      }
+  });
+}
+
 
 
 
