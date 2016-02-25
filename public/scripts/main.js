@@ -5,11 +5,11 @@ var geek = {};
 geek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2';
 
 geek.getInput = function () {
-  $('#citySubmit').on('click', function (e) {
+  $('form').on('submit', function (e) {
     e.preventDefault();
-    userCity = $('input[name="cityButton"]:checked').val();
-    console.log(userCity);
-    geek.makeCall(userCity);
+    geek.userCity = $('input[name="userCity"]').val();
+    console.log(geek.userCity);
+    geek.makeCall(geek.userCity);
   });
 };
 
