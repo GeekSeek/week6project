@@ -26,7 +26,7 @@ geek.makeCall = function (cityName) {
     dataType: 'jsonp',
     data: {
       format: 'json',
-      l: cityName,
+      l: geek.userCity,
       q: 'junior front-end developer',
       co: 'CA',
       psf: 'advsrch',
@@ -56,10 +56,8 @@ geek.makeCall = function (cityName) {
 
 // Display results in handlebar template
 geek.displayResults = function (results) {
-  console.log(results);
   var resultsHtml = $('#resultListTemplate').html();
   var resultsTemplate = Handlebars.compile(resultsHtml);
-  console.log(geek.fullObject.totalResults);
   if (geek.fullObject.totalResults < 10) {
     $('#loadMore').hide();
   } else {
@@ -67,7 +65,7 @@ geek.displayResults = function (results) {
   }
   results.forEach(function (jobPost) {
     // console.log(jobPost);
-    $('section.results').append(resultsTemplate(jobPost));
+    $('section.results .listContainer').append(resultsTemplate(jobPost));
   });
 };
 
@@ -79,7 +77,7 @@ geek.makeSortedCall = function (cityName) {
     dataType: 'jsonp',
     data: {
       format: 'json',
-      l: cityName,
+      l: geek.userCity,
       q: 'junior front-end developer',
       co: 'CA',
       psf: 'advsrch',
@@ -112,7 +110,7 @@ geek.filterResults = function (sortedData) {
 
 $('#loadMore').on('click', function (e) {
   e.preventDefault();
-  // $('section.results').empty();
+  $('section.results .listContainer').empty();
   var listSection = $(this).attr('value');
   var stringAsNumber = parseInt(listSection);
   var newSearch = stringAsNumber + 10;
@@ -145,7 +143,7 @@ $('#loadMore').on('click', function (e) {
     }
   }).then(function (data) {
     geek.fullObject = data;
-    console.log(data.results);
+    console.log(data);
     $('#loadMore').attr('value', newSearch);
     geek.hideButton(newSearch);
     geek.displayResults(data.results);
@@ -153,10 +151,11 @@ $('#loadMore').on('click', function (e) {
 });
 
 geek.hideButton = function (newSearch) {
-  if (geek.fullObject.totalResults > newSearch) {
-    $('#loadMore').show();
-  } else {
+  console.log(newSearch);
+  if (geek.fullObject.totalResults < newSearch) {
     $('#loadMore').hide();
+  } else {
+    $('#loadMore').show();
   }
 };
 
