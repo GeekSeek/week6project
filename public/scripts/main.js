@@ -37,7 +37,7 @@ geek.makeCall = function (cityName) {
       radius: '50',
       sr: 'directhire',
       expired: 'false',
-      as_and: 'telecommute',
+      as_and: '',
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (data) {
@@ -45,6 +45,7 @@ geek.makeCall = function (cityName) {
   });
 };
 
+//make a call that will display the results sorted by date posted instead of relevance
 geek.makeSortedCall = function (cityName) {
   $.ajax({
     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
@@ -69,7 +70,7 @@ geek.makeSortedCall = function (cityName) {
       radius: '50',
       sr: 'directhire',
       expired: 'false',
-      as_and: 'telecommute',
+      as_and: '',
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (sortedData) {
@@ -77,6 +78,7 @@ geek.makeSortedCall = function (cityName) {
     geek.filterResults(sortedData.objects);
   });
 };
+//make a call with staffing agencies included. Default search will only include direct hires
 
 geek.filterResults = function (sortedData) {
   console.log('works!');
