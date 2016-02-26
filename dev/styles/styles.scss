@@ -24,6 +24,8 @@ body {
 
 ul {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .wrapper {
@@ -183,6 +185,19 @@ form {
 
 section.results {
 	// display: none;
+	background: $white;
+}
+
+.jobPosting {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+
+	& > * {
+		width: 40%;
+	}
 }
 
 span#indeed_at {
