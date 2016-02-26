@@ -8,23 +8,25 @@
 	<!-- RESULT LIST HANDLEBAR TEMPLATE -->
 	<script id="resultListTemplate" type="x-handlebars-template">
 		<ul class="resultList wrapper">
-			<li class="jobPosting clearfix">
+			<li class="jobPosting">
 				<div class="shortDesc">
 					<h4 class="jobTitle">{{jobtitle}}</h4>
 					<h4 class="company">{{company}}</h4>
 					<h4 class="location">{{formattedLocationFull}}</h4>
-					<h5 class="fromage">{{formattedRelativeTime}}</h5>
+					<h4 class="fromage">{{formattedRelativeTime}}</h4>
 				</div>
 				<div class="longDesc">
 					<p class="snippet">{{snippet}}</p>
-					<ul class="skillsList">
-						<li class="skill">HTML</li>
-						<li class="skill">CSS</li>
-						<li class="skill">JS</li>
-						<li class="skill">SASS</li>
-						<li class="skill">Gulp</li>
-					</ul>
-					<a href="{{url}}">Apply</a>
+					<div class="tagButtonContainer">
+						<ul class="skillsList">
+							<li class="skill">HTML</li>
+							<li class="skill">CSS</li>
+							<li class="skill">JS</li>
+							<li class="skill">SASS</li>
+							<li class="skill">Gulp</li>
+						</ul>
+						<a href="{{url}}" target="_blank">Apply</a>
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -52,7 +54,7 @@
 				</div>
 				<h2>Geek Seek</h2>
 			</div><!-- .logo-container -->
-			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, iure?</h2>
+			<h2>Find some shitty tech jobs</h2>
 			<form>
 				<input type="text" name="userCity" id="userCity">
 				<input id="citySubmit" type="submit" value="Find a job!">
