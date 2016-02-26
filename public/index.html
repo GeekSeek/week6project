@@ -61,36 +61,43 @@
 			</form>
 		</div><!-- .wrapper -->
 	</header>
+
 	<section class="sortSearch">
-		<div class="logo-container">
-			<div class="logo">
-				<img src="assets/logo_geekseek.png" alt="geek seek logo">
-			</div>
-			<h2>Geek Seek</h2>
-		</div><!-- .logo-container -->
-		<form id="secondSearch">
-			<input type="text" name="userCity2" id="userCity2">
-			<input id="citySubmit2" type="submit" value="Find a job!">
-		</form>
-		<div class="toggles">
-			<div class="tog">
-			<p>Find jobs based on</p>
-				<label class="switch switch-flat">
-					<input id="agency" class="switch-input" type="checkbox" />
-					<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
-					<span class="switch-handle"></span> 
-				</label>
-			</div>
-			<div class="tog">
-			<p>Sort by</p>
-				<label class="switch switch-flat">
-					<input id="sort" class="switch-input" type="checkbox" />
-					<span class="switch-label" data-on="Date" data-off="Relevance"></span>
-					<span class="switch-handle"></span> 
-				</label>
-			</div>
-		</div>
-	</section>
+		<div class="wrapper">
+			<div class="logoSearchContainer">	
+				<div class="logo-container">
+					<div class="logo">
+						<img src="assets/logo_geekseek.png" alt="geek seek logo">
+					</div>
+					<h2>Geek Seek</h2>
+				</div><!-- .logo-container -->
+				<form id="secondSearch">
+					<input type="text" name="userCity2" id="userCity2">
+					<input id="citySubmit2" type="submit" value="Find a job!">
+				</form> <!-- /secondSearch -->
+			</div> <!-- /logoSearchContainer -->
+			<div class="toggleContainer">
+				<div class="toggles">
+					<div class="tog">
+						<p>Find jobs based on</p>
+						<label class="switch switch-flat">
+							<input id="agency" class="switch-input" type="checkbox" />
+							<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
+							<span class="switch-handle"></span> 
+						</label>
+					</div> <!-- /tog -->
+					<div class="tog">
+						<p>Sort by</p>
+						<label class="switch switch-flat">
+							<input id="sort" class="switch-input" type="checkbox" />
+							<span class="switch-label" data-on="Date" data-off="Relevance"></span>
+							<span class="switch-handle"></span> 
+						</label>
+					</div> <!-- /tog -->
+				</div> <!-- /toggles -->
+			</div> <!-- /toggleContainer -->
+		</div> <!-- /wrapper -->
+	</section> <!-- /sortSearch -->
 
 	<section class="results" id="results">
 		<div class="listContainer">
