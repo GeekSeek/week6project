@@ -12,11 +12,11 @@ geek.getInput = function(){
 		console.log(geek.userCity);
 		geek.makeCall(geek.userCity);
     // geek.makeSortedCall(geek.userCity);
-    $('html, body').animate ({
-        scrollTop: $("#results").offset().top},1000);
+    $('header').slideUp(1000);
 	   });
 }
 
+// first ajax call
 
 geek.makeCall = function(cityName){
 	$.ajax({
@@ -32,7 +32,7 @@ geek.makeCall = function(cityName){
       as_phr: '',
       fromage: '30',
       limit:'10',
-      // sort: 'date',
+      sort: 'date',
       highlight: 0,
       salary:'',
       as_not:'',
@@ -110,7 +110,6 @@ geek.filterResults = function(sortedData) {
 
 $('#loadMore').on('click', function(e){
   e.preventDefault();
-   $('section.results .listContainer').empty();
   var listSection = $(this).attr('value');
   var stringAsNumber = parseInt(listSection);
   var newSearch = stringAsNumber + 10;
@@ -125,7 +124,7 @@ $('#loadMore').on('click', function(e){
       co:'CA',
       psf: 'advsrch',
       as_phr: '',
-      sort: '',
+      sort: 'date',
       fromage: '30',
       limit:'10',
       start: listSection,
@@ -162,10 +161,13 @@ geek.hideButton = function(newSearch) {
 geek.displayMoreResults = function(results) {
   var resultsHtml = $('#resultListTemplate').html();
   var resultsTemplate = Handlebars.compile(resultsHtml);
+  $('section.results .listContainer').empty();
   results.forEach(function(jobPost) {
     // console.log(jobPost);
     $('section.results .listContainer').append(resultsTemplate(jobPost));
   });
+  $('html, body').animate ({
+    scrollTop: $("#results").offset().top},1000);
 }
 
 
