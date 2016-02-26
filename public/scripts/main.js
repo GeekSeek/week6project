@@ -74,6 +74,16 @@ geek.displayResults = function (results) {
 $('#secondSearch').on('submit', function (e) {
   e.preventDefault();
   geek.userCity = $('#userCity2').val();
+  if ($('#agency').is(":checked")) {
+    geek.agency = 'employer';
+  } else {
+    geek.agency = '';
+  };
+  if ($("#sort").is(":checked")) {
+    geek.sortResults = 'date';
+  } else {
+    geek.sortResults = '';
+  };
   console.log(geek.userCity);
   // make a call that will display the results sorted by date posted instead of relevance
   $.ajax({
@@ -87,7 +97,7 @@ $('#secondSearch').on('submit', function (e) {
       co: 'CA',
       psf: 'advsrch',
       as_phr: '',
-      sort: 'date',
+      sort: geek.sortResults,
       fromage: '30',
       limit: '10',
       salary: '',
@@ -97,13 +107,15 @@ $('#secondSearch').on('submit', function (e) {
       jt: 'all',
       st: '',
       radius: '50',
-      sr: 'directhire',
+      sr: geek.agency,
       expired: 'false',
       as_and: '',
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (sortedData) {
     console.log(sortedData);
+    console.log(geek.agency);
+    console.log(geek.sortResults);
     geek.filterResults(sortedData.objects);
   });
 });
@@ -132,7 +144,7 @@ $('#loadMore').on('click', function (e) {
       co: 'CA',
       psf: 'advsrch',
       as_phr: '',
-      sort: 'date',
+      sort: geek.sortResults,
       fromage: '30',
       limit: '10',
       start: listSection,
@@ -141,9 +153,9 @@ $('#loadMore').on('click', function (e) {
       as_ttl: '',
       as_cmp: '',
       jt: 'all',
-      st: '',
+      st: geek.agency,
       radius: '50',
-      sr: 'directhire',
+      sr: '',
       expired: 'false',
       as_and: '',
       as_any: 'HTML+CSS+JavaScript'
