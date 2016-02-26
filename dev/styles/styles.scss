@@ -117,7 +117,7 @@ form {
 	}
 }
 
-#userCity {
+#userCity, #userCity2 {
 	color: $grey;
 	font-weight: 300;
 	flex-grow: 1;
@@ -127,7 +127,7 @@ form {
 	}
 }
 
-#citySubmit {
+#citySubmit, #citySubmit2 {
 	width: 150px;
 	color: $white;
 	background: $yellow;
@@ -138,61 +138,25 @@ form {
 	}
 }
 
-// .logo {
-// 	@include column(12);
-// 	@include pull(9);
-// 	margin-top: 20px;
-// }
+// === END OF HEADER SECTION ===
 
-// .logo img, .logo h2 {
-// 	float: left;
-// }
 
-// .logo img {
-// 	width: 50px;
-// }
+// === FILTERING SECTION ===
 
-// .logo h2 {
-// 	margin-top: 0;
-// 	padding: 10px;
-
-// }
-
-// form {
-// 	@include column(6);
-// 	@include pull(3);
-// 	@include push(3);
-// 	align-self: center;
-// 	box-shadow: 0 0 5px $green;
-// 	position: relative;
-// 	z-index: 1;
-// 	input {
-// 		margin: 0;
-// 		padding: 10px;
-// 		border: 0;
-// 		outline: 0;
-// 	}
-// 	#userCity {
-// 		width: 78%;
-
-// 	}
-// 	#citySubmit {
-// 		width: 20%;
-// 		background: $yellow;
-// 		color: $white;
-// 	}
-// }
+section.sortSearch {
+	position: relative;
+	color: $white;
+}
 
 div.toggles {
 	display:flex;
 	width:50%;
 	margin:0 auto;
 	& > * {
-		width:40%;
+		width:25%;
 		margin:0 5%;
 	}
 }
-
 
 .switch {
 	position: relative;
@@ -278,6 +242,10 @@ div.toggles {
   transition: all 0.3s ease;
 }
 
+// === END OF FILTERING SECTION ===
+
+
+// === RESULTS SECTION ===
 
 section.results {
 	// display: none;
