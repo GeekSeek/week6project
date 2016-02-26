@@ -11,7 +11,7 @@ geek.getInput = function(){
 		geek.userCity = $('input[name="userCity"]').val();
 		console.log(geek.userCity);
 		geek.makeCall(geek.userCity);
-    geek.makeSortedCall(geek.userCity);
+    // geek.makeSortedCall(geek.userCity);
     $('html, body').animate ({
         scrollTop: $("#results").offset().top},1000);
 	   });
@@ -69,38 +69,38 @@ geek.displayResults = function(results) {
 };
 
 //make a call that will display the results sorted by date posted instead of relevance
-geek.makeSortedCall = function(cityName){
-  $.ajax({
-    url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
-    method: 'GET',
-    dataType: 'jsonp',
-    data: {
-      format: 'json',
-      l: geek.userCity,
-      q:'junior front-end developer',
-      co:'CA',
-      psf: 'advsrch',
-      as_phr: '',
-      sort: 'date',
-      fromage: '30',
-      limit:'10',
-      salary:'',
-      as_not:'',
-      as_ttl:'',
-      as_cmp:'',
-      jt: 'all',
-      st: '',
-      radius: '50',
-      sr: 'directhire',
-      expired:'false',
-      as_and:'',
-      as_any:'HTML+CSS+JavaScript'
-    }
-  }).then(function(sortedData){
-    console.log(sortedData);
-    geek.filterResults(sortedData.objects);
-  });
-}
+// geek.makeSortedCall = function(cityName){
+//   $.ajax({
+//     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
+//     method: 'GET',
+//     dataType: 'jsonp',
+//     data: {
+//       format: 'json',
+//       l: geek.userCity,
+//       q:'junior front-end developer',
+//       co:'CA',
+//       psf: 'advsrch',
+//       as_phr: '',
+//       sort: 'date',
+//       fromage: '30',
+//       limit:'10',
+//       salary:'',
+//       as_not:'',
+//       as_ttl:'',
+//       as_cmp:'',
+//       jt: 'all',
+//       st: '',
+//       radius: '50',
+//       sr: 'directhire',
+//       expired:'false',
+//       as_and:'',
+//       as_any:'HTML+CSS+JavaScript'
+//     }
+//   }).then(function(sortedData){
+//     console.log(sortedData);
+//     geek.filterResults(sortedData.objects);
+//   });
+// }
 //make a call with staffing agencies included. Default search will only include direct hires
 
 
@@ -146,7 +146,6 @@ $('#loadMore').on('click', function(e){
     console.log(data);
     $('#loadMore').attr('value', newSearch);
     geek.hideButton(newSearch);
-    geek.displayResults(data.results);
   });
 });
 
@@ -157,6 +156,16 @@ geek.hideButton = function(newSearch) {
     } else {
       $('#loadMore').show();
     }
+   geek.displayMoreResults(geek.fullObject.results);
+}
+
+geek.displayMoreResults = function(results) {
+  var resultsHtml = $('#resultListTemplate').html();
+  var resultsTemplate = Handlebars.compile(resultsHtml);
+  results.forEach(function(jobPost) {
+    // console.log(jobPost);
+    $('section.results .listContainer').append(resultsTemplate(jobPost));
+  });
 }
 
 
@@ -192,5 +201,4 @@ geek.getGoogle = function (query){
 
 $(document).ready(function(){
   geek.getInput();
-  console.log(gps);
 })
