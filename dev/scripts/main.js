@@ -1,4 +1,6 @@
 var geek = {};
+geek.agency = '';
+geek.sortResults = '';
 
 geek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2'
 
