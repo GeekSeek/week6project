@@ -185,17 +185,26 @@ form {
 
 div.toggles {
 	display:flex;
+	width:50%;
+	margin:0 auto;
+	& > * {
+		width:40%;
+		margin:0 5%;
+	}
 }
+
 
 .switch {
 	position: relative;
 	display: block;
 	vertical-align: top;
-	width: 150px;
-	height: 25px;
-	padding: 3px;
+	width: 100%;
+	// height: 25px;
 	margin: 0 10px 10px 0;
 	border-radius: 18px;
+	padding: 0;
+	background: rgba(255,255,255,0.5);
+	background-image: none;
 }
 
 .switch-input {
@@ -207,26 +216,28 @@ div.toggles {
 .switch-label {
   position: relative;
   display: block;
-  height: inherit;
   text-transform: uppercase;
-  background: rgba(255,255,255,0.5);
+  font-size:13px;
+  background: rgba(255,255,255,0.3);
   border-radius: inherit;
+  border:solid 2px $white;
+  padding: 5px;
 }
+
 .switch-label:before {
   content: attr(data-off);
-  right: 11px;
+  position: absolute;
+  right: 8px;
   color: #aaaaaa;
-  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
 }
 .switch-label:after {
   content: attr(data-on);
-  left: 11px;
-  color: #FFFFFF;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: 0;
+  color: $grey-dark;
   opacity: 0;
 }
 .switch-input:checked ~ .switch-label {
-	  background: $white;
   // box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 .switch-input:checked ~ .switch-label:before {
@@ -237,67 +248,36 @@ div.toggles {
 }
 .switch-handle {
   position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 23px;
-  height: 23px;
-  background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
-  background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+  top: 5px;
+  left: 5px;
+  width: 22px;
+  height: 22px;
   border-radius: 100%;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+	background: $white;
+	box-shadow: none;
 }
+
 .switch-handle:before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -6px 0 0 -6px;
+  transform:translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+  background: $grey;
   border-radius: 6px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
 .switch-input:checked ~ .switch-handle {
-  left: 74px;
-  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+  left: calc(100% - 5px);
+  transform:translateX(-100%);
+  // text!
 }
 .switch-label, .switch-handle {
   transition: all 0.3s ease;
 }
-.switch-flat {
-	padding: 0;
-	background: #FFF;
-	background-image: none;
-}
-.switch-flat .switch-label {
-	background: #FFF;
-	border: solid 2px #eceeef;
-	box-shadow: none;
-}
-.switch-flat .switch-label:after {
-	color: $blue;
-}
-.switch-flat .switch-handle {
-	top: 6px;
-	left: 6px;
-	background: #dadada;
-	width: 22px;
-	height: 22px;
-	box-shadow: none;
-}
-.switch-flat .switch-handle:before {
-	background: $white;
-}
-.switch-flat .switch-input:checked ~ .switch-label {
-	background: $white;
-	border-color: $blue;
-}
-.switch-flat .switch-input:checked ~ .switch-handle {
-	left: 72px;
-	background: $blue;
-	box-shadow: none;
-}
+
 
 section.results {
 	// display: none;
