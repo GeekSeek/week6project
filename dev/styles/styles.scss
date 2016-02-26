@@ -192,13 +192,53 @@ section.results {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	height: 100%;
 	padding: 0;
 	margin: 0;
 
 	& > * {
-		width: 40%;
+		padding: 0 2%;
 	}
 }
+
+.shortDesc {
+	width: 35%;
+	text-align: right;
+	border-right: 2px solid $green;
+}
+
+.longDesc {
+	width: 65%;
+	height: 100%;
+	margin-left: 2%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.tagButtonContainer {
+	display: flex;
+	justify-content: space-between;
+
+	a {
+		background: $yellow;
+		color: $white;
+		padding: 5px 20px;
+		text-decoration: none;
+	}
+}
+
+.skillsList {
+	display: flex;
+
+	.skill {
+		padding: 5px 20px;
+		background: $blue;
+		color: $white;
+		margin: 0 5px;
+	}
+}
+
 
 span#indeed_at {
 	display: none;
