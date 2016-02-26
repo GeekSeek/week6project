@@ -6,7 +6,7 @@ geek.apiURL = 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=
 // Pass city into Indeed ajax call
 
 geek.getInput = function(){
-	$('form').on('submit', function(e){
+	$('#firstSearch').on('submit', function(e){
 		e.preventDefault();
 		geek.userCity = $('input[name="userCity"]').val();
 		console.log(geek.userCity);
@@ -16,7 +16,7 @@ geek.getInput = function(){
 	   });
 }
 
-// first ajax call
+// FIRST ajax call
 
 geek.makeCall = function(cityName){
 	$.ajax({
@@ -66,47 +66,67 @@ geek.displayResults = function(results) {
     // console.log(jobPost);
     $('section.results .listContainer').append(resultsTemplate(jobPost));
   });
+  $('#userCity2').attr('value', geek.userCity);
 };
 
-//make a call that will display the results sorted by date posted instead of relevance
-// geek.makeSortedCall = function(cityName){
-//   $.ajax({
-//     url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
-//     method: 'GET',
-//     dataType: 'jsonp',
-//     data: {
-//       format: 'json',
-//       l: geek.userCity,
-//       q:'junior front-end developer',
-//       co:'CA',
-//       psf: 'advsrch',
-//       as_phr: '',
-//       sort: 'date',
-//       fromage: '30',
-//       limit:'10',
-//       salary:'',
-//       as_not:'',
-//       as_ttl:'',
-//       as_cmp:'',
-//       jt: 'all',
-//       st: '',
-//       radius: '50',
-//       sr: 'directhire',
-//       expired:'false',
-//       as_and:'',
-//       as_any:'HTML+CSS+JavaScript'
-//     }
-//   }).then(function(sortedData){
-//     console.log(sortedData);
-//     geek.filterResults(sortedData.objects);
-//   });
-// }
+$('#secondSearch').on('submit', function(e) {
+  e.preventDefault();
+  geek.userCity = $('#userCity2').val();
+  if ($('#agency').is(":checked")) {
+    geek.agency = 'employer';
+  } else {
+    geek.agency = '';
+  };
+  if ($("#sort").is(":checked")) {
+    geek.sortResults = 'date';
+  } else {
+    geek.sortResults = '';
+  };
+  console.log(geek.userCity);
+  // make a call that will display the results sorted by date posted instead of relevance
+    $.ajax({
+      url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
+      method: 'GET',
+      dataType: 'jsonp',
+      data: {
+        format: 'json',
+        l: geek.userCity,
+        q:'junior front-end developer',
+        co:'CA',
+        psf: 'advsrch',
+        as_phr: '',
+        sort: geek.sortResults,
+        fromage: '30',
+        limit:'10',
+        salary:'',
+        as_not:'',
+        as_ttl:'',
+        as_cmp:'',
+        jt: 'all',
+        st: '',
+        radius: '50',
+        sr: geek.agency,
+        expired:'false',
+        as_and:'',
+        as_any:'HTML+CSS+JavaScript'
+      }
+    }).then(function(sortedData){
+      console.log(sortedData);
+      console.log(geek.agency);
+      console.log(geek.sortResults);
+      geek.filterResults(sortedData.objects);
+  });
+});
+
+
 //make a call with staffing agencies included. Default search will only include direct hires
 
 
 geek.filterResults = function(sortedData) {
   console.log('works!');
 }
+
+// SECOND ajax call
 
 $('#loadMore').on('click', function(e){
   e.preventDefault();
@@ -124,7 +144,7 @@ $('#loadMore').on('click', function(e){
       co:'CA',
       psf: 'advsrch',
       as_phr: '',
-      sort: 'date',
+      sort: geek.sortResults,
       fromage: '30',
       limit:'10',
       start: listSection,
@@ -133,9 +153,9 @@ $('#loadMore').on('click', function(e){
       as_ttl:'',
       as_cmp:'',
       jt: 'all',
-      st: '',
+      st: geek.agency,
       radius: '50',
-      sr: 'directhire',
+      sr: '',
       expired:'false',
       as_and:'',
       as_any:'HTML+CSS+JavaScript'
