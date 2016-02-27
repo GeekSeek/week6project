@@ -52,15 +52,16 @@ geek.makeCall = function (cityName) {
     }
   }).then(function (data) {
     geek.fullObject = data;
-    console.log(data.results);
+    console.log(data);
     geek.displayResults(data.results);
+    $('.resultsNum').text('There are ' + data.totalResults + ' job postings in your area.');
   });
 };
 
 // Display results in handlebar template
 geek.displayResults = function (results) {
   var resultsHtml = $('#resultListTemplate').html();
-  var resultsTemplate = Handlebars.compile(resultsHtml);
+  // var resultsTemplate = Handlebars.compile(resultsHtml);
   // var resSnippet = results.snippet;
   console.log(results);
   if (geek.fullObject.totalResults < 10) {
@@ -70,30 +71,72 @@ geek.displayResults = function (results) {
   }
   results.forEach(function (jobPost) {
     // $('section.results .listContainer').append(resultsTemplate(jobPost));
-    var skill = $('<ul>').addClass('skill-list');
+    // console.log(jobPost);
+    var skillsList = $('<ul>').addClass('skillsList');
     if (/HTML/i.test(jobPost.snippet)) {
-      skill.append("<li>HTML</li>");
+      var skillHTML = $('<li>').addClass('skill').text('HTML');
+      skillsList.append(skillHTML);
     }
 
     if (/CSS/i.test(jobPost.snippet)) {
-      skill.append("<li>CSS</li>");
+      var skillCSS = $('<li>').addClass('skill').text('CSS');
+      skillsList.append(skillCSS);
     }
 
     if (/Ember/i.test(jobPost.snippet)) {
-      skill.append("<li>Ember</li>");
+      var skillEmber = $('<li>').addClass('skill').text('Ember');
+      skillsList.append(skillEmber);
     }
 
-    var tagButtonContainer = $('<div>').addClass('tagButtonContainer');
-    var link = $('<a>').attr('href', '"' + jobPost.url + '"');
+    if (/JavaScript/i.test(jobPost.snippet)) {
+      var skillJavaScript = $('<li>').addClass('skill').text('JavaScript');
+      skillsList.append(skillJavaScript);
+    }
+
+    if (/UX/i.test(jobPost.snippet)) {
+      var skillUX = $('<li>').addClass('skill').text('UX');
+      skillsList.append(skillUX);
+    }
+
+    if (/Design/i.test(jobPost.snippet)) {
+      var skillDesign = $('<li>').addClass('skill').text('Design');
+      skillsList.append(skillDesign);
+    }
+
+    if (/Backend/i.test(jobPost.snippet)) {
+      var skillBackend = $('<li>').addClass('skill').text('Back-end');
+      skillsList.append(skillBackend);
+    }
+
+    if (/SASS/i.test(jobPost.snippet)) {
+      var skillSASS = $('<li>').addClass('skill').text('SASS');
+      skillsList.append(skillSASS);
+    }
+
+    // var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skill, link);
+
+    // var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
+    // var item = $('<li>').append(snippet);
+    // var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
+    // $('.tagButtonContainer').append(skill, link);
+    // $('.resultList').append(item, tagButtonContainer);
+
+    //append a list to resultList wrapper
+
+    var link = $('<a>').attr('href', jobPost.url).text('Apply');
+    var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skillsList, link);
+
     var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
-    var item = $('<article>').append(snippet);
-    $('.tagButtonContainer').append(skill, link);
-    $('section.results .listContainer').append(item, tagButtonContainer);
+    var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
 
-    // var artist = $('<p>').addClass('artist').text(art.principalOrFirstMaker);
+    var fromage = $('<h4>').addClass('fromage').text(jobPost.formattedRelativeTime);
+    var location = $('<h4>').addClass('location').text(jobPost.formattedLocationFull);
+    var company = $('<h4>').addClass('company').text(jobPost.company);
+    var jobTitle = $('<h4>').addClass('jobTitle').text(jobPost.jobtitle);
+    var shortDesc = $('<div>').addClass('shortDesc').append(jobTitle, company, location, fromage);
 
-    //if description contains HTML append li with HTML to ul.skillslist
-    // console.log(description);
+    var listItem = $('<li>').addClass('jobPosting').append(shortDesc, longDesc);
+    $('.resultList').append(listItem);
   });
   $('#userCity2').attr('value', geek.userCity);
 };
@@ -210,7 +253,7 @@ geek.displayMoreResults = function (results) {
   var resultsTemplate = Handlebars.compile(resultsHtml);
   $('section.results .listContainer').empty();
   results.forEach(function (jobPost) {
-    // console.log(jobPost);
+    console.log(jobPost);
     $('section.results .listContainer').append(resultsTemplate(jobPost));
   });
   $('html, body').animate({
