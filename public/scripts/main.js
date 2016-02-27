@@ -36,7 +36,11 @@ geek.makeCall = function (cityName) {
       as_phr: '',
       fromage: '30',
       limit: '10',
+<<<<<<< HEAD
+      sort: 'date',
+=======
       sort: '',
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
       highlight: 0,
       salary: '',
       as_not: '',
@@ -45,19 +49,34 @@ geek.makeCall = function (cityName) {
       jt: 'all',
       st: '',
       radius: '50',
+<<<<<<< HEAD
+      sr: 'directhire',
+=======
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
       expired: 'false',
       as_and: '',
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (data) {
+<<<<<<< HEAD
+    geek.fullObject = data;
+    // console.log(data);
+    geek.displayResults(data.results);
+    $('.resultsNum').text('There are ' + data.totalResults + ' job postings in your area.');
+=======
     geek.totalResults = data.totalResults;
     // console.log(data);
     geek.displayResults(data.results);
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
   });
 };
 
 geek.displayButton = function () {
+<<<<<<< HEAD
+  if (geek.fullObject.totalResults < 10) {
+=======
   if (geek.totalResults < 10) {
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
     $('#loadMore').hide();
   } else {
     $('#loadMore').show();
@@ -66,11 +85,18 @@ geek.displayButton = function () {
 
 // Display results in handlebar template
 geek.displayResults = function (results) {
+<<<<<<< HEAD
+  var resultsHtml = $('#resultListTemplate').html();
+  // var resultsTemplate = Handlebars.compile(resultsHtml);
+  // var resSnippet = results.snippet;
+  console.log(results);
+=======
   // var resultsHtml = $('#resultListTemplate').html();
   // var resultsTemplate = Handlebars.compile(resultsHtml);
   // var resSnippet = results.snippet;
   console.log(results);
   $('.resultsNum').text('There are ' + geek.totalResults + ' job postings in your area.');
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
   // if (geek.fullObject.totalResults < 10) {
   //   $('#loadMore').hide();
   // } else {
@@ -120,6 +146,8 @@ geek.displayResults = function (results) {
       skillsList.append(skillSASS);
     }
 
+<<<<<<< HEAD
+=======
     if (/Angular/i.test(jobPost.snippet)) {
       var skillAngular = $('<li>').addClass('skill').text('Angular');
       skillsList.append(skillAngular);
@@ -140,6 +168,7 @@ geek.displayResults = function (results) {
       skillsList.append(skillFront);
     }
 
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
     // var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skill, link);
 
     // var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
@@ -153,7 +182,11 @@ geek.displayResults = function (results) {
     var link = $('<a>').attr('href', jobPost.url).text('Apply');
     var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skillsList, link);
 
+<<<<<<< HEAD
+    var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
+=======
     var snippet = $('<p>').addClass('snippet').html(jobPost.snippet);
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
     var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
 
     var fromage = $('<h4>').addClass('fromage').text(jobPost.formattedRelativeTime);
@@ -203,8 +236,14 @@ $('#secondSearch').on('submit', function (e) {
       as_ttl: '',
       as_cmp: '',
       jt: 'all',
+<<<<<<< HEAD
+      st: '',
+      radius: '50',
+      sr: geek.agency,
+=======
       st: geek.agency,
       radius: '50',
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
       expired: 'false',
       as_and: '',
       as_any: 'HTML+CSS+JavaScript'
@@ -213,6 +252,18 @@ $('#secondSearch').on('submit', function (e) {
     console.log(sortedData);
     console.log(geek.agency);
     console.log(geek.sortResults);
+<<<<<<< HEAD
+    geek.filterResults(sortedData.objects);
+  });
+});
+
+//make a call with staffing agencies included. Default search will only include direct hires
+
+geek.filterResults = function (sortedData) {
+  console.log('works!');
+};
+
+=======
     geek.totalResults = sortedData.totalResults;
     $('.resultList').empty();
     geek.displayResults(sortedData.results);
@@ -221,6 +272,7 @@ $('#secondSearch').on('submit', function (e) {
   });
 });
 
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
 // SECOND ajax call
 
 $('#loadMore').on('click', function (e) {
@@ -257,21 +309,35 @@ $('#loadMore').on('click', function (e) {
       as_any: 'HTML+CSS+JavaScript'
     }
   }).then(function (data) {
+<<<<<<< HEAD
+    geek.fullObject = data;
+    console.log(data);
+    $('#loadMore').attr('value', newSearch);
+=======
     geek.totalResults = data.totalResults;
     console.log(data);
     $('#loadMore').attr('value', newSearch);
     geek.displayMoreResults(data.results);
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
     geek.hideButton(newSearch);
   });
 });
 
 geek.hideButton = function (newSearch) {
   console.log(newSearch);
+<<<<<<< HEAD
+  if (geek.fullObject.totalResults < newSearch) {
+=======
   if (geek.totalResults < newSearch) {
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
     $('#loadMore').hide();
   } else {
     $('#loadMore').show();
   }
+<<<<<<< HEAD
+  geek.displayMoreResults(geek.fullObject.results);
+=======
+>>>>>>> 54ae743f6e617015ff559135b78aeea257a70b85
 };
 
 geek.displayMoreResults = function (results) {

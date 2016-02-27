@@ -137,7 +137,6 @@ geek.displayResults = function(results) {
       var skillFront = $('<li>').addClass('skill').text('Front End');
        skillsList.append(skillFront);
      }
-
     // var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skill, link);
     
     // var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
@@ -152,6 +151,7 @@ geek.displayResults = function(results) {
     var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skillsList, link);
 
     var snippet = $('<p>').addClass('snippet').html(jobPost.snippet);
+
     var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
 
     var fromage = $('<h4>').addClass('fromage').text(jobPost.formattedRelativeTime);
