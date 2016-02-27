@@ -54,11 +54,11 @@
 				</div>
 				<h2>Geek Seek</h2>
 			</div><!-- .logo-container -->
-			<h2>Find some shitty tech jobs</h2>
 			<form id="firstSearch">
 				<input type="text" name="userCity" id="userCity">
 				<input id="citySubmit" type="submit" value="Find a job!">
 			</form>
+			<h2>Find some shitty tech jobs</h2>
 		</div><!-- .wrapper -->
 	</header>
 
@@ -77,35 +77,37 @@
 				</form> <!-- /secondSearch -->
 			</div> <!-- /logoSearchContainer -->
 			<div class="toggleContainer">
-				<div class="toggles">
-					<div class="tog">
-						<p>Find jobs based on</p>
-						<label class="switch switch-flat">
-							<input id="agency" class="switch-input" type="checkbox" />
-							<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
-							<span class="switch-handle"></span> 
-						</label>
-					</div> <!-- /tog -->
-					<div class="tog">
-						<p>Sort by</p>
-						<label class="switch switch-flat">
-							<input id="sort" class="switch-input" type="checkbox" />
-							<span class="switch-label" data-on="Date" data-off="Relevance"></span>
-							<span class="switch-handle"></span> 
-						</label>
-					</div> <!-- /tog -->
-				</div> <!-- /toggles -->
+				<div class="tog">
+					<p>Find jobs based on:</p>
+					<label class="switch switch-flat">
+						<input id="agency" class="switch-input" type="checkbox" />
+						<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
+						<span class="switch-handle"></span> 
+					</label>
+				</div> <!-- /tog -->
+				<div class="tog">
+					<p>Sort by:</p>
+					<label class="switch switch-flat">
+						<input id="sort" class="switch-input" type="checkbox" />
+						<span class="switch-label" data-on="Date" data-off="Relevance"></span>
+						<span class="switch-handle"></span> 
+					</label>
+				</div> <!-- /tog -->
 			</div> <!-- /toggleContainer -->
 		</div> <!-- /wrapper -->
 	</section> <!-- /sortSearch -->
 
 	<section class="results" id="results">
-		<div class="listContainer">
-			
+		<div class="wrapper">
+			<div class="listContainer">
+				
+			</div>
+			<button id="sortDate" value="sortDate">Sort by Date</button>
+			<button class="loadMore" id="loadMore" value="10">Load More</button>
 		</div>
-	<button id="sortDate" value="sortDate">Sort by Date</button>
-	<button class="loadMore" id="loadMore" value="10">Load More</button>
 	</section>
+
+
 <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"><img
 src="http://www.indeed.com/p/jobsearch.gif" style="border: 0;
 vertical-align: middle;" alt="Indeed job search"></a></span>

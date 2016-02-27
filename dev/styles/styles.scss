@@ -6,6 +6,7 @@ $grey: #d5d5d5;
 $grey-dark: darken($grey, 10%);
 $blue: #195EF7;
 $green: #BCD6D3;
+$green-dark: darken($green, 20%);
 $yellow: #FFCA00;
 $yellow-light: lighten($yellow, 10%);
 $black: #2a2a2a;
@@ -75,8 +76,8 @@ video {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: $green;
-	opacity: .5;
+	background: $green-dark;
+	opacity: .6;
 	z-index: -1;
 }
 
@@ -145,19 +146,26 @@ form {
 // === FILTERING SECTION ===
 
 section.sortSearch {
+	position: fixed;
 	font-size: 14px;
 	width: 100%;
 	background: $green;
 	color: $white;
+	padding: 20px 0;
 
 	.wrapper {
 		display: flex;
 		flex-direction: column;
+		padding: 0 2%;
 	}
 
 	.logo-container {
 		position: static;
 		width: 50%;
+
+		h2 {
+			margin: 0;
+		}
 	}
 }
 
@@ -177,50 +185,60 @@ section.sortSearch {
 
 .toggleContainer {
 	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 }
 
-div.toggles {
-	// display:flex;
-	& > * {
-		width:25%;
-		margin:0 5%;
+.tog {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&:first-child {
+		margin-right: 40px;
+	}
+
+	p {
+		text-align: right;
+		flex-grow: 1;
+		margin-right: 20px;
+		font-size: 12px;
 	}
 }
 
 .switch {
+	flex-shrink: 0;
 	position: relative;
 	display: block;
-	vertical-align: top;
-	width: 100%;
-	margin: 0 10px 10px 0;
+	width: 110px;
+	height: 100%;
 	border-radius: 18px;
 	padding: 0;
-	background: rgba(255,255,255,0.5);
-	background-image: none;
+	background: $white;
 }
 
 .switch-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  display: none;
 }
 .switch-label {
   position: relative;
   display: block;
-  text-transform: uppercase;
-  font-size:13px;
+  font-size: 12px;
   background: $white;
   border-radius: inherit;
   border:solid 2px $white;
   padding: 5px 10px;
+
+  &:hover {
+  	cursor: pointer;
+  }
 }
 
 .switch-label:before {
   content: attr(data-off);
   position: absolute;
   right: 10px;
-  color: $grey;
+  color: $grey-dark;
   text-align: right;
 }
 .switch-label:after {
@@ -230,9 +248,7 @@ div.toggles {
   opacity: 0;
   color: $grey-dark;
 }
-.switch-input:checked ~ .switch-label {
-  // box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
-}
+
 .switch-input:checked ~ .switch-label:before {
   opacity: 0;
 }
@@ -240,16 +256,25 @@ div.toggles {
   opacity: 1;
   color: $yellow;
 }
+
+// ---Toggle Buttons---
+
 .switch-handle {
   position: absolute;
-  top: 5px;
+  top: 4px;
   left: 5px;
   width: 22px;
   height: 22px;
-  border-radius: 100%;
+  border-radius: 50%;
 	background: $grey;
 	box-shadow: none;
+
+	&:hover {
+  	cursor: pointer;
+  }
 }
+
+// ---Toggle Buttons Inner---
 
 .switch-handle:before {
   content: "";
@@ -263,13 +288,15 @@ div.toggles {
   border-radius: 50%;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
+
 .switch-input:checked ~ .switch-handle {
   left: calc(100% - 5px);
   transform:translateX(-100%);
   background: $yellow;
 }
-.switch-label, .switch-handle {
-  transition: all 0.3s ease;
+
+.switch-label, .switch-label:before, .switch-label:after, .switch-handle {
+  transition: all 0.5s;
 }
 
 // === END OF FILTERING SECTION ===
@@ -278,8 +305,10 @@ div.toggles {
 // === RESULTS SECTION ===
 
 section.results {
-	// display: none;
 	background: $white;
+	width: 100%;
+	margin-top: 130px;
+	padding: 0;
 }
 
 .jobPosting {
@@ -288,7 +317,7 @@ section.results {
 	width: 100%;
 	height: 100%;
 	padding: 0;
-	margin: 0;
+	margin: 20px 0;
 
 	& > * {
 		padding: 0 2%;
@@ -298,16 +327,39 @@ section.results {
 .shortDesc {
 	width: 35%;
 	text-align: right;
-	border-right: 2px solid $green;
+	border-right: 3px solid $green;
+
+	h4 {
+		margin: 0;
+		padding-bottom: 10px;
+		font-size: 14px;
+		font-weight: 400;
+	}
+
+	.jobTitle {
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 16px;
+	}
+
+	.fromage {
+		color: $grey-dark;
+	}
 }
 
 .longDesc {
 	width: 65%;
-	height: 100%;
 	margin-left: 2%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	font-size: 14px;
+}
+
+.snippet {
+	flex-grow: 1;
+	margin: 0;
+	padding-bottom: 10px;
 }
 
 .tagButtonContainer {
@@ -319,14 +371,21 @@ section.results {
 		color: $white;
 		padding: 5px 20px;
 		text-decoration: none;
+		transition: all 0.35s;
+
+		&:hover {
+			background: $yellow-light;
+		}
 	}
 }
 
 .skillsList {
 	display: flex;
+	margin: 0;
+	padding: 0;
 
 	.skill {
-		padding: 5px 20px;
+		padding: 5px;
 		background: $blue;
 		color: $white;
 		margin: 0 5px;
