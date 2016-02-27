@@ -34,7 +34,7 @@ geek.makeCall = function(cityName){
       as_phr: '',
       fromage: '30',
       limit:'10',
-      sort: 'date',
+      sort: '',
       highlight: 0,
       salary:'',
       as_not:'',
@@ -43,21 +43,19 @@ geek.makeCall = function(cityName){
       jt: 'all',
       st: '',
       radius: '50',
-      sr: 'directhire',
       expired:'false',
       as_and:'',
       as_any:'HTML+CSS+JavaScript'
     }
   }).then(function(data){
-    geek.fullObject = data;
+    geek.totalResults = data.totalResults;
     // console.log(data);
     geek.displayResults(data.results);
-    $('.resultsNum').text('There are ' + data.totalResults + ' job postings in your area.');
   });
 }
 
 geek.displayButton = function(){
-  if (geek.fullObject.totalResults < 10) {
+  if (geek.totalResults < 10) {
     $('#loadMore').hide();
   } else {
     $('#loadMore').show();
@@ -66,10 +64,11 @@ geek.displayButton = function(){
 
 // Display results in handlebar template
 geek.displayResults = function(results) {
-  var resultsHtml = $('#resultListTemplate').html();
+  // var resultsHtml = $('#resultListTemplate').html();
   // var resultsTemplate = Handlebars.compile(resultsHtml);
   // var resSnippet = results.snippet;
   console.log(results);
+  $('.resultsNum').text('There are ' + geek.totalResults + ' job postings in your area.');
   // if (geek.fullObject.totalResults < 10) {
   //   $('#loadMore').hide();
   // } else {
@@ -184,9 +183,8 @@ $('#secondSearch').on('submit', function(e) {
         as_ttl:'',
         as_cmp:'',
         jt: 'all',
-        st: '',
+        st: geek.agency,
         radius: '50',
-        sr: geek.agency,
         expired:'false',
         as_and:'',
         as_any:'HTML+CSS+JavaScript'
@@ -195,7 +193,11 @@ $('#secondSearch').on('submit', function(e) {
       console.log(sortedData);
       console.log(geek.agency);
       console.log(geek.sortResults);
-      geek.filterResults(sortedData.objects);
+      geek.totalResults = sortedData.totalResults;
+      $('.resultList').empty();
+      geek.displayResults(sortedData.results);
+      console.log(sortedData.totalResults);
+      geek.displayButton();
   });
 });
 
@@ -243,21 +245,21 @@ $('#loadMore').on('click', function(e){
       as_any:'HTML+CSS+JavaScript'
     }
   }).then(function(data){
-    geek.fullObject = data;
+    geek.totalResults = data.totalResults;
     console.log(data);
     $('#loadMore').attr('value', newSearch);
+    geek.displayMoreResults(data.results);
     geek.hideButton(newSearch);
   });
 });
 
 geek.hideButton = function(newSearch) {
   console.log(newSearch);
-  if (geek.fullObject.totalResults < newSearch) {
+  if (geek.totalResults < newSearch) {
       $('#loadMore').hide();
     } else {
       $('#loadMore').show();
     }
-   geek.displayMoreResults(geek.fullObject.results);
 }
 
 geek.displayMoreResults = function(results) {
