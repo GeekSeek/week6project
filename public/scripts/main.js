@@ -13,7 +13,7 @@ geek.getInput = function () {
   $('#firstSearch').on('submit', function (e) {
     e.preventDefault();
     geek.userCity = $('input[name="userCity"]').val();
-    console.log(geek.userCity);
+    // console.log(geek.userCity);
     geek.makeCall(geek.userCity);
     // geek.makeSortedCall(geek.userCity);
     $('header').slideUp(1000);
@@ -52,10 +52,18 @@ geek.makeCall = function (cityName) {
     }
   }).then(function (data) {
     geek.fullObject = data;
-    console.log(data);
+    // console.log(data);
     geek.displayResults(data.results);
     $('.resultsNum').text('There are ' + data.totalResults + ' job postings in your area.');
   });
+};
+
+geek.displayButton = function () {
+  if (geek.fullObject.totalResults < 10) {
+    $('#loadMore').hide();
+  } else {
+    $('#loadMore').show();
+  }
 };
 
 // Display results in handlebar template
@@ -64,11 +72,11 @@ geek.displayResults = function (results) {
   // var resultsTemplate = Handlebars.compile(resultsHtml);
   // var resSnippet = results.snippet;
   console.log(results);
-  if (geek.fullObject.totalResults < 10) {
-    $('#loadMore').hide();
-  } else {
-    $('#loadMore').show();
-  }
+  // if (geek.fullObject.totalResults < 10) {
+  //   $('#loadMore').hide();
+  // } else {
+  //   $('#loadMore').show();
+  // }
   results.forEach(function (jobPost) {
     // $('section.results .listContainer').append(resultsTemplate(jobPost));
     // console.log(jobPost);
@@ -169,6 +177,7 @@ $('#secondSearch').on('submit', function (e) {
       as_phr: '',
       sort: geek.sortResults,
       fromage: '30',
+      highlight: 0,
       limit: '10',
       salary: '',
       as_not: '',
@@ -217,6 +226,7 @@ $('#loadMore').on('click', function (e) {
       sort: geek.sortResults,
       fromage: '30',
       limit: '10',
+      highlight: 0,
       start: listSection,
       salary: '',
       as_not: '',
@@ -249,15 +259,17 @@ geek.hideButton = function (newSearch) {
 };
 
 geek.displayMoreResults = function (results) {
-  var resultsHtml = $('#resultListTemplate').html();
-  var resultsTemplate = Handlebars.compile(resultsHtml);
-  $('section.results .listContainer').empty();
-  results.forEach(function (jobPost) {
-    console.log(jobPost);
-    $('section.results .listContainer').append(resultsTemplate(jobPost));
-  });
+  // var resultsHtml = $('#resultListTemplate').html();
+  // var resultsTemplate = Handlebars.compile(resultsHtml);
+  console.log(results);
+  $('.resultList').empty();
+  geek.displayResults(results);
+  // results.forEach(function(jobPost) {
+  // console.log(jobPost);
+  // $('section.results .listContainer').append(resultsTemplate(jobPost));
+  // });
   $('html, body').animate({
-    scrollTop: $("#results").offset().top }, 1000);
+    scrollTop: $("#results").offset().top - 140 }, 1000);
 };
 
 // Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province
