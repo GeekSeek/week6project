@@ -20,7 +20,11 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	font-family: $mainFont;
-	font-family: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $headerFont;
+	font-weight: 300;
 }
 
 ul {
@@ -58,6 +62,16 @@ header .wrapper {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	& > * {
+		margin-bottom: 20px;
+	}
+
+	p {
+		font-family: $headerFont;
+		font-size: 24px;
+		text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+	}
 	
 }
 
@@ -94,7 +108,6 @@ video {
 	align-items: center;
 
 	h2 {
-		font-weight: 300;
 		flex-grow: 1;
 		padding: 15px;
 	}
@@ -141,6 +154,20 @@ form {
 
 	&:hover {
 		background: $yellow-light;
+	}
+}
+
+.credit-container {
+	position: absolute;
+	bottom: 0;
+	left: 2%;
+
+	#credit {
+		font-size: 10px;
+	}
+
+	a {
+		color: $white;
 	}
 }
 
@@ -321,7 +348,8 @@ section.results {
 	width: 100%;
 	height: 100%;
 	padding: 0;
-	margin: 20px 0;
+	margin: 0;
+	margin-bottom: 50px;
 
 	& > * {
 		padding: 0 2%;
@@ -336,14 +364,13 @@ section.results {
 	h4 {
 		margin: 0;
 		padding-bottom: 10px;
-		font-size: 14px;
+		font-size: 16px;
 		font-weight: 400;
 	}
 
 	.jobTitle {
 		text-transform: uppercase;
 		font-weight: 700;
-		font-size: 16px;
 	}
 
 	.fromage {
@@ -393,6 +420,7 @@ section.results {
 		background: $blue;
 		color: $white;
 		margin: 0 5px;
+		font-size: 12px;
 	}
 }
 
