@@ -46,9 +46,10 @@ header {
 	height: 100vh;
 	overflow: hidden;
 
-	h2 {
+	p {
 		font-family: $headerFont;
 		font-weight: 300;
+		margin: 0;
 	}
 }
 
