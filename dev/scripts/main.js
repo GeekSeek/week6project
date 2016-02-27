@@ -34,7 +34,7 @@ geek.makeCall = function(cityName){
       as_phr: '',
       fromage: '30',
       limit:'10',
-      sort: 'date',
+      sort: '',
       highlight: 0,
       salary:'',
       as_not:'',
@@ -119,6 +119,26 @@ geek.displayResults = function(results) {
        skillsList.append(skillSASS);
      }
 
+     if (/Angular/i.test(jobPost.snippet)){
+      var skillAngular = $('<li>').addClass('skill').text('Angular');
+       skillsList.append(skillAngular);
+     }
+
+     if (/Software/i.test(jobPost.snippet)){
+      var skillSoftware = $('<li>').addClass('skill').text('Software');
+       skillsList.append(skillSoftware);
+     }
+
+     if (/Agile/i.test(jobPost.snippet)){
+      var skillAgile = $('<li>').addClass('skill').text('Agile');
+       skillsList.append(skillAgile);
+     }
+
+     if (/Front(.*?)End/i.test(jobPost.snippet)){
+      var skillFront = $('<li>').addClass('skill').text('Front End');
+       skillsList.append(skillFront);
+     }
+
     // var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skill, link);
     
     // var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
@@ -132,7 +152,7 @@ geek.displayResults = function(results) {
     var link = $('<a>').attr('href', jobPost.url).text('Apply');
     var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skillsList, link);
 
-    var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
+    var snippet = $('<p>').addClass('snippet').html(jobPost.snippet);
     var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
 
     var fromage = $('<h4>').addClass('fromage').text(jobPost.formattedRelativeTime);
