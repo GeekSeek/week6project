@@ -61,14 +61,39 @@ geek.makeCall = function (cityName) {
 geek.displayResults = function (results) {
   var resultsHtml = $('#resultListTemplate').html();
   var resultsTemplate = Handlebars.compile(resultsHtml);
+  // var resSnippet = results.snippet;
+  console.log(results);
   if (geek.fullObject.totalResults < 10) {
     $('#loadMore').hide();
   } else {
     $('#loadMore').show();
   }
   results.forEach(function (jobPost) {
-    // console.log(jobPost);
-    $('section.results .listContainer').append(resultsTemplate(jobPost));
+    // $('section.results .listContainer').append(resultsTemplate(jobPost));
+    var skill = $('<ul>').addClass('skill-list');
+    if (/HTML/i.test(jobPost.snippet)) {
+      skill.append("<li>HTML</li>");
+    }
+
+    if (/CSS/i.test(jobPost.snippet)) {
+      skill.append("<li>CSS</li>");
+    }
+
+    if (/Ember/i.test(jobPost.snippet)) {
+      skill.append("<li>Ember</li>");
+    }
+
+    var tagButtonContainer = $('<div>').addClass('tagButtonContainer');
+    var link = $('<a>').attr('href', '"' + jobPost.url + '"');
+    var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
+    var item = $('<article>').append(snippet);
+    $('.tagButtonContainer').append(skill, link);
+    $('section.results .listContainer').append(item, tagButtonContainer);
+
+    // var artist = $('<p>').addClass('artist').text(art.principalOrFirstMaker);
+
+    //if description contains HTML append li with HTML to ul.skillslist
+    // console.log(description);
   });
   $('#userCity2').attr('value', geek.userCity);
 };
@@ -223,3 +248,4 @@ geek.getGoogle = function (query) {
 $(document).ready(function () {
   geek.getInput();
 });
+//# sourceMappingURL=main.js.map

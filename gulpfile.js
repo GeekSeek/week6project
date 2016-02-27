@@ -34,9 +34,11 @@ gulp.task('watch', () => {
 
 gulp.task('scripts', () => {
 	gulp.src('./dev/scripts/main.js')
+			.pipe(sourcemaps.init())
 	    .pipe(babel({
 	      presets: ['es2015']
 	    }))
+	    .pipe(sourcemaps.write('.'))
 	    .pipe(gulp.dest('./public/scripts'))
 	    .pipe(reload({stream: true}));
 	});
