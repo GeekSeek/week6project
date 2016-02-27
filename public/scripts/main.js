@@ -221,12 +221,6 @@ $('#secondSearch').on('submit', function (e) {
   });
 });
 
-//make a call with staffing agencies included. Default search will only include direct hires
-
-geek.filterResults = function (sortedData) {
-  console.log('works!');
-};
-
 // SECOND ajax call
 
 $('#loadMore').on('click', function (e) {
