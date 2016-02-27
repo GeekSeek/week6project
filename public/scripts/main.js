@@ -70,6 +70,13 @@ geek.displayResults = function (results) {
   // var resultsTemplate = Handlebars.compile(resultsHtml);
   // var resSnippet = results.snippet;
   console.log(results);
+  var loadLess = $('#loadLess').val();
+  var loadLessVal = parseInt(loadLess);
+  if (loadLessVal > 10) {
+    $('#loadLess').show();
+  } else {
+    $('#loadLess').hide();
+  }
   $('.resultsNum').text('There are ' + geek.totalResults + ' job postings in your area.');
   // if (geek.fullObject.totalResults < 10) {
   //   $('#loadMore').hide();
@@ -225,6 +232,7 @@ $('#secondSearch').on('submit', function (e) {
 
 $('#loadMore').on('click', function (e) {
   e.preventDefault();
+  // $('#loadLess').css('display', 'block');
   var listSection = $(this).attr('value');
   var stringAsNumber = parseInt(listSection);
   var newSearch = stringAsNumber + 10;
@@ -260,6 +268,52 @@ $('#loadMore').on('click', function (e) {
     geek.totalResults = data.totalResults;
     console.log(data);
     $('#loadMore').attr('value', newSearch);
+    $('#loadLess').attr('value', newSearch);
+    geek.displayMoreResults(data.results);
+    geek.hideButton(newSearch);
+  });
+});
+
+$('#loadLess').on('click', function (e) {
+  e.preventDefault();
+  var listSection = $(this).attr('value');
+  var stringAsNumber = parseInt(listSection);
+  // console.log(stringAsNumber);
+  var newSearch = stringAsNumber - 20;
+  console.log(newSearch);
+  $.ajax({
+    url: 'http://api.indeed.com/ads/apisearch?publisher=6808461958676807&v=2',
+    method: 'GET',
+    dataType: 'jsonp',
+    data: {
+      format: 'json',
+      l: geek.userCity,
+      q: 'junior front-end developer',
+      co: 'CA',
+      psf: 'advsrch',
+      as_phr: '',
+      sort: geek.sortResults,
+      fromage: '30',
+      limit: '10',
+      highlight: 0,
+      start: newSearch,
+      salary: '',
+      as_not: '',
+      as_ttl: '',
+      as_cmp: '',
+      jt: 'all',
+      st: geek.agency,
+      radius: '50',
+      sr: '',
+      expired: 'false',
+      as_and: '',
+      as_any: 'HTML+CSS+JavaScript'
+    }
+  }).then(function (data) {
+    geek.totalResults = data.totalResults;
+    console.log(data);
+    $('#loadMore').attr('value', newSearch + 10);
+    $('#loadLess').attr('value', newSearch + 10);
     geek.displayMoreResults(data.results);
     geek.hideButton(newSearch);
   });
