@@ -97,6 +97,9 @@ video {
 		flex-grow: 1;
 		padding: 15px;
 	}
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .logo {
