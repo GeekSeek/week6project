@@ -17,7 +17,6 @@ geek.getInput = function () {
     geek.makeCall(geek.userCity);
     // geek.makeSortedCall(geek.userCity);
     $('header').slideUp(1000);
-    $('.results').show();
   });
 };
 
@@ -174,6 +173,8 @@ geek.displayResults = function (results) {
     $('.resultList').append(listItem);
   });
   $('#userCity2').attr('value', geek.userCity);
+  $('.results').show();
+  $('footer').show();
 };
 
 $('#secondSearch').on('submit', function (e) {

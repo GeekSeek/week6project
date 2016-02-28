@@ -15,7 +15,6 @@ geek.getInput = function(){
 		geek.makeCall(geek.userCity);
     // geek.makeSortedCall(geek.userCity);
     $('header').slideUp(1000);
-    $('.results').show();
 	});
 }
 
@@ -173,6 +172,8 @@ geek.displayResults = function(results) {
 
   });
   $('#userCity2').attr('value', geek.userCity);
+  $('.results').show();
+  $('footer').show();
 };
 
 
