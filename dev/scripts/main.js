@@ -62,11 +62,8 @@ geek.displayButton = function(){
   }
 }
 
-// Display results in handlebar template
+
 geek.displayResults = function(results) {
-  // var resultsHtml = $('#resultListTemplate').html();
-  // var resultsTemplate = Handlebars.compile(resultsHtml);
-  // var resSnippet = results.snippet;
   console.log(results);
   var loadLess = $('#loadLess').val();
   var loadLessVal = parseInt(loadLess);
@@ -76,14 +73,8 @@ geek.displayResults = function(results) {
     $('#loadLess').hide();
   }
   $('.resultsNum').text('There are ' + geek.totalResults + ' job postings in your area.');
-  // if (geek.fullObject.totalResults < 10) {
-  //   $('#loadMore').hide();
-  // } else {
-  //   $('#loadMore').show();
-  // }
+  
   results.forEach(function(jobPost) {
-    // $('section.results .listContainer').append(resultsTemplate(jobPost));
-    // console.log(jobPost);
     var skillsList = $('<ul>').addClass('skillsList');
      if (/HTML/i.test(jobPost.snippet)){
       var skillHTML = $('<li>').addClass('skill').text('HTML');
@@ -144,15 +135,6 @@ geek.displayResults = function(results) {
       var skillFront = $('<li>').addClass('skill').text('Front End');
        skillsList.append(skillFront);
      }
-    // var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skill, link);
-    
-    // var snippet = $('<p>').addClass('snippet').text(jobPost.snippet);
-    // var item = $('<li>').append(snippet);
-    // var longDesc = $('<div>').addClass('longDesc').append(snippet, tagButtonContainer);
-    // $('.tagButtonContainer').append(skill, link);
-    // $('.resultList').append(item, tagButtonContainer);
-
-    //append a list to resultList wrapper
 
     var link = $('<a>').attr('href', jobPost.url).text('Apply');
     var tagButtonContainer = $('<div>').addClass('tagButtonContainer').append(skillsList, link);
@@ -172,6 +154,8 @@ geek.displayResults = function(results) {
 
   });
   $('#userCity2').attr('value', geek.userCity);
+  $('.tagButtonContainer a').attr('target', '_blank');
+  $('.sortSearch').show();
   $('.results').show();
   $('footer').show();
 };
@@ -227,6 +211,8 @@ $('#secondSearch').on('submit', function(e) {
       geek.displayResults(sortedData.results);
       console.log(sortedData.totalResults);
       geek.displayButton();
+      $('html, body').animate ({
+        scrollTop: $(".results .wrapper").offset().top - 500},1000);
   });
 });
 
