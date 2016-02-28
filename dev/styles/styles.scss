@@ -72,7 +72,6 @@ header .wrapper {
 		font-size: 24px;
 		text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 	}
-	
 }
 
 video {
@@ -162,12 +161,18 @@ form {
 	bottom: 0;
 	left: 2%;
 
+
 	#credit {
 		font-size: 10px;
+		text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
 	}
 
 	a {
 		color: $white;
+		text-decoration: none;
+		padding-bottom: 1px;
+		border-bottom: 1px solid $white;
 	}
 }
 
@@ -475,6 +480,21 @@ span#indeed_at {
 
 .loadLess {
 	display:none;
+}
+
+// ====== FOOTER SECTION =====
+
+footer {
+	display: none;
+	text-align: center;
+	font-size: 10px;
+	color: $white;
+	a {
+		color: $white;
+		text-decoration: none;
+		padding-bottom: 1px;
+		border-bottom: 1px solid $white;
+	}
 }
 
 @import "responsive";
