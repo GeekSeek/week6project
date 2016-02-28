@@ -4,6 +4,15 @@
 	}
 }
 
+@media screen and (max-device-width: 800px) {
+    .video-container .poster img {
+         display: block;
+    }
+    video {
+        display: none;
+    }
+}
+
 @media (max-width: 785px) {
 
 	#firstSearch {
