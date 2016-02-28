@@ -380,6 +380,20 @@ geek.getGoogle = function (query){
   });
 }
 
+$('button.pause').on('click', function(e) {
+  $('.video-container .poster img').show();
+  $('video').hide();
+  $(this).fadeOut();
+  $('button.play').fadeIn();
+});
+
+$('button.play').on('click', function(e) {
+  $('video').show();
+  $('.video-container .poster img').hide();
+  $(this).fadeOut();
+  $('button.pause').fadeIn();
+});
+
 $(document).ready(function(){
   geek.getInput();
   $('.logo-container').on('click', function() {
