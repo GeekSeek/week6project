@@ -367,16 +367,14 @@ geek.getGoogle = function (query){
 }
 
 $('button.pause').on('click', function(e) {
-  $('.video-container .poster img').show();
-  $('video').hide();
   $(this).fadeOut();
+  $('video').get(0).pause();
   $('button.play').fadeIn();
 });
 
 $('button.play').on('click', function(e) {
-  $('video').show();
-  $('.video-container .poster img').hide();
   $(this).fadeOut();
+  $('video').get(0).play();
   $('button.pause').fadeIn();
 });
 
