@@ -1,0 +1,127 @@
+@media (max-width: 995px) {
+	#secondSearch {
+		width: 75%;
+	}
+}
+
+@media (max-width: 785px) {
+
+	#firstSearch {
+		width: 75%;
+	}
+	
+	.logo-container {
+		width: 100%;
+	}
+
+	#secondSearch {
+		width: 100%;
+	}
+}
+
+@media (max-width: 715px) {
+
+	section.sortSearch {
+		position: static;
+	}
+	
+	.logoSearchContainer {
+		& > * {
+			margin-bottom: 10px;
+		}
+	}
+
+	.resultsToggleContainer {
+		flex-direction: column-reverse;
+		align-items: flex-end;
+		& > * {
+			margin-bottom: 10px;
+		}
+	}
+	
+	.tog {
+		flex-grow: 0;
+		width: auto;
+	}
+
+	.resultsNum {
+		text-align: right;
+	}
+
+	.jobPosting {
+		flex-direction: column;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.shortDesc, .longDesc {
+		width: 100%;
+		padding: 0;
+	}
+
+	.shortDesc {
+		text-align: left;
+		border: none;
+		border-bottom: 3px solid $green;
+		margin: none;
+	}
+
+	.longDesc {
+		margin-left: 0;
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 550px) {
+	
+	#firstSearch {
+		width: 100%;
+	}
+
+	#citySubmit {
+		width: 120px;
+	}
+
+
+	.logoSearchContainer {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	section.sortSearch .logo-container {
+		width: 100%;
+	}
+
+	.resultsToggleContainer {
+		& > * {
+			margin-bottom: 10px;
+		}
+	}
+
+
+	.tagButtonContainer {
+		flex-direction: column;
+
+		& > * {
+			margin-bottom: 10px;
+		}
+
+		a {
+			text-align: center;
+			padding: 20px;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+
+	.toggleContainer {
+		flex-direction: column;
+	}
+
+	.tog:first-child {
+		padding-right: 0;
+	}
+}
