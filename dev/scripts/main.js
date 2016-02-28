@@ -380,7 +380,6 @@ geek.getGoogle = function (query){
   });
 }
 
-
 $(document).ready(function(){
   geek.getInput();
   $('.logo-container').on('click', function() {
