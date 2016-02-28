@@ -93,13 +93,12 @@ header .wrapper {
 	display: none;
 	z-index: -100;
 	position: absolute;
-	top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
 	background-size: cover; 
 }
 
@@ -190,6 +189,30 @@ form {
 		text-decoration: none;
 		padding-bottom: 1px;
 		border-bottom: 1px solid $white;
+	}
+}
+
+button.pause {
+	display: block;
+	outline: 0;
+}
+
+button.play {
+	display: none;
+	outline: 0;
+}
+
+button.pause, button.play {
+	position: absolute;
+	bottom: 2%;
+	right: 2%;
+	background: none;
+	border: none;
+	padding: 0;
+	padding-bottom: 2px;
+	margin: 0;
+	i {
+		color: white;
 	}
 }
 

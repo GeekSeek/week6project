@@ -11,6 +11,10 @@
     video {
         display: none;
     }
+
+    button.pause {
+    	display: none;
+    }
 }
 
 @media (max-width: 785px) {
