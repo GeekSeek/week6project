@@ -129,6 +129,19 @@
 }
 
 @media (max-width: 480px) {
+	
+	header .wrapper p, header form, .credit-container #credit {
+		text-shadow: none;
+		box-shadow: none;
+	}
+
+	.filter {
+		opacity: 1;
+	}
+
+	button.play, button.pause {
+		display: none;
+	}
 
 	.toggleContainer {
 		flex-direction: column;
