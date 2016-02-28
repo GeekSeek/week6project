@@ -17,6 +17,7 @@ geek.getInput = function () {
     geek.makeCall(geek.userCity);
     // geek.makeSortedCall(geek.userCity);
     $('header').slideUp(1000);
+    $('.results').show();
   });
 };
 
@@ -339,7 +340,7 @@ geek.displayMoreResults = function (results) {
   // $('section.results .listContainer').append(resultsTemplate(jobPost));
   // });
   $('html, body').animate({
-    scrollTop: $("#results").offset().top - 140 }, 1000);
+    scrollTop: $(".results .wrapper").offset().top - 500 }, 1000);
 };
 
 // Geolocate user's current location. Pass coordinates into getGoogle ajax call to return city and province

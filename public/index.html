@@ -5,6 +5,7 @@
 	<title>Geek Seek</title>
 	<link rel="stylesheet" href="styles/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 	<header>
@@ -28,7 +29,7 @@
 				<h2>Geek Seek</h2>
 			</div><!-- .logo-container -->
 			<div class="credit-container">
-				<p id="credit">Contact <a href="#">Allye Vice</a>, <a href="#">Lynn Gammie</a>, & <a href="#">Davin Suen</a> if you're seeking a geek.
+				<p id="credit">Contact creators <a href="http://allyevice.com" target="_blank">Allye Vice</a>, <a href="http://lynngammie.com" target="_blank">Lynn Gammie</a>, & <a href="http://davinsuen.com" target="_blank">Davin Suen</a> if you're seeking a geek.
 				</p>
 			</div> <!-- /credit-container -->
 
@@ -55,37 +56,46 @@
 					<input id="citySubmit2" type="submit" value="Find a job!">
 				</form> <!-- /secondSearch -->
 			</div> <!-- /logoSearchContainer -->
-			<div class="toggleContainer">
-				<div class="tog">
-					<p>Find jobs based on:</p>
-					<label class="switch switch-flat">
-						<input id="agency" class="switch-input" type="checkbox" />
-						<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
-						<span class="switch-handle"></span> 
-					</label>
-				</div> <!-- /tog -->
-				<div class="tog">
-					<p>Sort by:</p>
-					<label class="switch switch-flat">
-						<input id="sort" class="switch-input" type="checkbox" />
-						<span class="switch-label" data-on="Date" data-off="Relevance"></span>
-						<span class="switch-handle"></span> 
-					</label>
-				</div> <!-- /tog -->
-			</div> <!-- /toggleContainer -->
+			<div class="resultsToggleContainer">
+				<p class="resultsNum"></p>
+				<div class="toggleContainer">
+					<div class="tog">
+						<p>Find jobs based on:</p>
+						<label class="switch switch-flat">
+							<input id="agency" class="switch-input" type="checkbox" />
+							<span class="switch-label" data-on="Direct Hire" data-off="All"></span> 
+							<span class="switch-handle"></span> 
+						</label>
+					</div> <!-- /tog -->
+					<div class="tog">
+						<p>Sort by:</p>
+						<label class="switch switch-flat">
+							<input id="sort" class="switch-input" type="checkbox" />
+							<span class="switch-label" data-on="Date" data-off="Relevance"></span>
+							<span class="switch-handle"></span> 
+						</label>
+					</div> <!-- /tog -->
+				</div> <!-- /toggleContainer -->
+			</div> <!-- /resultsToggleContainer -->
 		</div> <!-- /wrapper -->
 	</section> <!-- /sortSearch -->
 
 	<section class="results" id="results">
 		<div class="wrapper">
-			<p class="resultsNum"></p>
 			<div class="listContainer">
 				<ul class="resultList wrapper">
 
 				</ul>
 			</div>
-			<button class="loadLess" id="loadLess" value="10">Go Back</button>
-			<button class="loadMore" id="loadMore" value="10">Load More</button>
+
+			<div class="loadButtonContainer">
+				<button class="loadLess" id="loadLess" value="10">
+					<i class="fa fa-arrow-circle-left"></i>
+				</button>
+				<button class="loadMore" id="loadMore" value="10">
+					<i class="fa fa-arrow-circle-right"></i>
+				</button>
+			</div> <!-- /loadButtonContainer -->
 		</div>
 	</section>
 

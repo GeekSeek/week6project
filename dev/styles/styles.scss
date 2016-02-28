@@ -214,24 +214,37 @@ section.sortSearch {
 	}
 }
 
-.toggleContainer {
+.resultsToggleContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
+}
+.resultsNum {
+	font-size: 12px;
+	margin: 0;
+}
+
+.toggleContainer {
 	display: flex;
 	justify-content: flex-end;
 }
+
 
 .tog {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: 50%;
 
 	&:first-child {
-		margin-right: 40px;
+		padding-right: 40px;
 	}
 
 	p {
 		text-align: right;
 		flex-grow: 1;
+		flex-shrink: 0;
 		margin-right: 20px;
 		font-size: 12px;
 	}
@@ -338,8 +351,8 @@ section.sortSearch {
 section.results {
 	background: $white;
 	width: 100%;
-	margin-top: 130px;
 	padding: 0;
+	display: none;
 }
 
 .jobPosting {
@@ -350,6 +363,10 @@ section.results {
 	padding: 0;
 	margin: 0;
 	margin-bottom: 50px;
+
+	&:first-child {
+		margin-top: 130px;
+	}
 
 	& > * {
 		padding: 0 2%;
@@ -412,6 +429,7 @@ section.results {
 
 .skillsList {
 	display: flex;
+	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
 
@@ -420,6 +438,7 @@ section.results {
 		background: $blue;
 		color: $white;
 		margin: 0 5px;
+		margin-top: 5px;
 		font-size: 12px;
 	}
 }
@@ -429,8 +448,32 @@ span#indeed_at {
 	display: none;
 }
 
-// Buttons
+// ===BUTTONS===
+
+.loadButtonContainer {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.loadLess, .loadMore {
+	background: none;
+	color: $yellow;
+	transition: all 0.35s;
+	border: 0;
+
+	i {
+		font-size: 50px;
+	}
+
+	&:hover {
+		color: $yellow-light;
+	}
+}
 
 .loadLess {
 	display:none;
 }
+
+@import "responsive";
