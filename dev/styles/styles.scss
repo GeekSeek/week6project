@@ -40,6 +40,10 @@ ul {
 	padding: 15px 2%;
 }
 
+input {
+	border-radius: none;
+}
+
 // === HEADER SECTION ===
 
 header {
@@ -456,7 +460,7 @@ section.results {
 
 .tagButtonContainer {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
 
 	a {
 		background: $yellow;
@@ -464,6 +468,7 @@ section.results {
 		padding: 5px 20px;
 		text-decoration: none;
 		transition: all 0.35s;
+		flex-grow: 0;
 
 		&:hover {
 			background: $yellow-light;
@@ -474,6 +479,7 @@ section.results {
 .skillsList {
 	display: flex;
 	flex-wrap: wrap;
+	flex-grow: 1;
 	margin: 0;
 	padding: 0;
 
