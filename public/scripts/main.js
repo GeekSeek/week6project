@@ -370,6 +370,9 @@ $('button.play').on('click', function (e) {
 });
 
 $(document).ready(function () {
+  $(this).ajaxError(function () {
+    $('.errorMessage').fadeIn(2000);
+  });
   geek.getInput();
   $('.logo-container').on('click', function () {
     window.location.reload(true);
